@@ -9,11 +9,7 @@ test('see results', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/');
-    let t = find('#example-1 li.Vibrant').text().trim();
-    
-    Ember.Logger.log('its', t);
-    assert.equal(t, "Vibrant #5c76c5 ■");
-    // assert.equal(find('#example-2 li:first').text(), "Vibrant #d6b040 ■");
-    // assert.equal(find('#example-3 li:first').text(), "Vibrant #d1544d ■");
+
+    assert.equal(find('#example-1 li.Vibrant').text().trim(), "Vibrant #5c76c5 ■");
   });
 });
