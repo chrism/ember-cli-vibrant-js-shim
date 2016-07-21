@@ -1,3 +1,4 @@
+/* globals Image */
 import Ember from 'ember';
 import Vibrant from 'vibrant';
 
