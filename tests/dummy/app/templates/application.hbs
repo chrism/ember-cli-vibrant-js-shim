@@ -1,9 +1,7 @@
 <h1>Vibrant.js</h1>
 
-{{test-image src="vibrant/examples/3.jpg" onColors=(action "sendColors")}}
+{{test-vibrant-example url="vibrant/examples/1.jpg"}}
 
-<ul>
-  {{#each swatchesArray as |swatch|}}
-    <li>name: {{swatch.name}}, hex: {{swatch.hex}}</li>
-  {{/each}}
-</ul>
+{{test-vibrant-example url="vibrant/examples/2.jpg"}}
+
+{{test-vibrant-example url="vibrant/examples/3.jpg"}}

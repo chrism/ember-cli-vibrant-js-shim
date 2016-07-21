@@ -1,0 +1,7 @@
+{{test-image src=url onColors=(action "sendColors")}}
+
+<ul>
+  {{#each swatchesArray as |swatch|}}
+    <li>{{swatch.name}}: {{swatch.hex}}</li>
+  {{/each}}
+</ul>
