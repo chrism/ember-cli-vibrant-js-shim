@@ -1,7 +1,50 @@
-<h1>Vibrant.js</h1>
+<h1 id="title">Ember CLI Vibrant.js Shim</h1>
+<h3>Extract prominent colors from an image using <a href="http://jariz.github.io/vibrant.js/">Vibrant.js</a></h3>
+
+<div class="button-wrapper">
+<a href="https://github.com/chrism/ember-cli-vibrant-js-shim" class="button github"><svg aria-hidden="true" class="octicon-mark-github" width="20px" height="20px" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59 0.4 0.07 0.55-0.17 0.55-0.38 0-0.19-0.01-0.82-0.01-1.49-2.01 0.37-2.53-0.49-2.69-0.94-0.09-0.23-0.48-0.94-0.82-1.13-0.28-0.15-0.68-0.52-0.01-0.53 0.63-0.01 1.08 0.58 1.23 0.82 0.72 1.21 1.87 0.87 2.33 0.66 0.07-0.52 0.28-0.87 0.51-1.07-1.78-0.2-3.64-0.89-3.64-3.95 0-0.87 0.31-1.59 0.82-2.15-0.08-0.2-0.36-1.02 0.08-2.12 0 0 0.67-0.21 2.2 0.82 0.64-0.18 1.32-0.27 2-0.27 0.68 0 1.36 0.09 2 0.27 1.53-1.04 2.2-0.82 2.2-0.82 0.44 1.1 0.16 1.92 0.08 2.12 0.51 0.56 0.82 1.27 0.82 2.15 0 3.07-1.87 3.75-3.65 3.95 0.29 0.25 0.54 0.73 0.54 1.48 0 1.07-0.01 1.93-0.01 2.2 0 0.21 0.15 0.46 0.55 0.38C13.71 14.53 16 11.53 16 8 16 3.58 12.42 0 8 0z"></path></svg>View on Github</a>
+
+<a href="https://www.npmjs.com/package/ember-cli-vibrant-js-shim" class="button npm"><svg aria-hidden="true" class="npm-mark" width="36px" height="14px" viewBox="0 0 18 7"><path class="outline" d="M0,0v6h5v1h4v-1h9v-6"/><path class="interior" d="M1,1v4h2v-3h1v3h1v-4h1v5h2v-4h1v2h-1v1h2v-4h1v4h2v-3h1v3h1v-3h1v3h1v-4"/></svg>View on NPM</a>
+</div>
+
+<hr />
+
+<h2>Installation</h2>
+
+<p>You can install it like a standard Ember addon. This brings in the <a href="http://jariz.github.io/vibrant.js/">Vibrant.js</a> dependency and makes it available as an ES6 style import</p>
+
+{{code-snippet name="installation" id="installation-code"}}
+
+<hr />
+
+<h2>Example Usage</h2>
+
+<p>
+  Once installed you can now import vibrant and use it to obtain the colors from an image.
+</p>
+
+<p>
+  The example code below is a simple component which listens to the image onload event and then parses the colors.
+</p>
+
+{{code-snippet name="color-extraction.js" id="color-extraction"}}
+
+<hr />
+
+<h2>Example Results</h2>
+
+<p>
+  Here are some example images and the hex values returned (there are many other values you can access, see the <a href="http://jariz.github.io/vibrant.js/">Vibrant.js docs for the full list</a>)
+</p>
 
 {{test-vibrant-example url="vibrant/examples/1.jpg" id="example-1"}}
 
 {{test-vibrant-example url="vibrant/examples/2.jpg" id="example-2"}}
 
 {{test-vibrant-example url="vibrant/examples/3.jpg" id="example-3"}}
+
+<hr />
+
+<h2>Further Information</h2>
+
+<p>See <a href="http://jariz.github.io/vibrant.js/">Vibrant.js</a> for more details, or the <a href="https://github.com/chrism/ember-cli-vibrant-js-shim">Github repo for this project</a></p>
