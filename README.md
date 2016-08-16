@@ -50,9 +50,12 @@ Running locally I get
 But using Travis get
 
 ```
+'first list...' 'Vibrant #c7b060 ■\n\n    Muted #6c5758 ■\n\n    DarkVibrant #423d8d ■\n\n    DarkMuted #11141d ■\n\n    LightVibrant #6873cf ■'
+'second list...' 'Vibrant #dbaf13 ■\n\n    Muted #7d8b9a ■\n\n    DarkVibrant #2b3fa5 ■\n\n    DarkMuted #65625c ■'
+'third list...' 'Vibrant #e34c49 ■\n\n    Muted #b3967b ■\n\n    DarkVibrant #72301c ■\n\n    DarkMuted #63816f ■\n\n    LightVibrant #fbf2ea ■'
 ```
 
-Hence the need for the two values in the tests.
+Hence the need for the matching color swatch type, not specific hex value.
 
 ## Building
 
