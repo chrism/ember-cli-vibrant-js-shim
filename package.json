@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-vibrant-js-shim",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An Ember CLI shim for the vibrant.js library as ES6 import",
   "directories": {
     "doc": "doc",
@@ -52,7 +52,7 @@
     "configPath": "tests/dummy/config",
     "demoURL": "http://chrismasters.net/ember-cli-vibrant-js-shim/",
     "versionCompatibility": {
-       "ember": ">1.13.0"
+      "ember": ">1.13.0"
     }
   }
 }
