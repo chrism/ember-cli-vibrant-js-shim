@@ -37,6 +37,23 @@ import Vibrant from 'vibrant';
 * `ember test`
 * `ember test --server`
 
+### note on hex values
+
+Running locally I get
+
+```
+'first list...' 'Vibrant #5c76c5 ■\n\n    Muted #587b72 ■\n\n    DarkVibrant #43428c ■\n\n    DarkMuted #12131c ■\n\n    LightVibrant #71d8e0 ■'
+'second list...' 'Vibrant #d6b040 ■\n\n    Muted #7f8996 ■\n\n    DarkVibrant #3347a6 ■\n\n    DarkMuted #626054 ■'
+'third list...' 'Vibrant #d1544d ■\n\n    Muted #ab8f79 ■\n\n    DarkVibrant #683422 ■\n\n    DarkMuted #5e6651 ■\n\n    LightVibrant #fbf2eb ■'
+```
+
+But using Travis get
+
+```
+```
+
+Hence the need for the two values in the tests.
+
 ## Building
 
 * `ember build`
