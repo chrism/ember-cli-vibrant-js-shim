@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-vibrant-js-shim",
   "version": "0.0.0",
-  "description": "An Ember CLI shim for the push.js notifcation library as ES6 import",
+  "description": "An Ember CLI shim for the vibrant.js library as ES6 import",
   "directories": {
     "doc": "doc",
     "test": "tests"
