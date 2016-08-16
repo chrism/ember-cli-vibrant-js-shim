@@ -6,44 +6,55 @@ export default Ember.Component.extend({
   tagName: 'img',
   attributeBindings: ['src'],
 
-  // TODO: This is needed (I think) for acceptance tests
+  init() {
+    this._super(...arguments);
 
-  imagePromise: null,
+    if (Ember.testing) {
+      this._loading = false;
+      Ember.Test.registerWaiter(() => this._loading === false);
+    }
+  },
+
+  loadImagePromise() {
+    const src = this.get('src');
+
+    let promise = new Ember.RSVP.Promise( (resolve, reject) => {
+      const img = new Image();
+
+      img.onload = (/* event */) => {
+        Ember.run(() => {
+          let swatches = new Vibrant(img).swatches();
+          // setTimeout(() => { resolve(swatches); }, 1000); // testing async wait works correctly
+          resolve(swatches);
+        });
+      };
+
+      img.onerror = () => {
+        Ember.run(() => reject());
+      };
+
+      img.src = src;
+    });
+
+    if (Ember.testing) {
+      this._loading = true;
+      return promise.finally(() => this._loading = false);
+    }
+
+    return promise;
+  },
 
   loadImage() {
-    let img = new Image();
-    img.src = this.get('src');
-
-    return new Ember.RSVP.Promise( resolve => {
-      img.onload = () => {
-        let swatches = new Vibrant(img).swatches();
-        Ember.run.later(() => { resolve(swatches); }, 2000);
-      };
+    this.loadImagePromise()
+    .then( swatches => {
+      this.get('onColors')(swatches);
+    })
+    .catch( (/* error */) => {
+      Ember.Logger.log('could not process swatches');
     });
   },
 
-  returnSwatches() {
-     this.set('imagePromise', this.loadImage());
-
-     this.get('imagePromise').then( swatches => {
-       Ember.Logger.log('promise resolved with swatches', swatches);
-       this.get('onColors')(swatches);
-     });
-  },
-
-  // This works using integration tests with wait helper
-
-  simpleLoadImage() {
-    let img = new Image();
-    img.src = this.get('src');
-
-    img.onload = () => {
-      let swatches = new Vibrant(img).swatches();
-      Ember.run.later(() => { this.get('onColors')(swatches); }, 2000);
-    };
-  },
-
   returnSwatchesOnInsert: Ember.on('didInsertElement', function() {
-    Ember.run.scheduleOnce('afterRender', this, this.simpleLoadImage);
+    Ember.run.scheduleOnce('afterRender', this, this.loadImage);
   })
 });
