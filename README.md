@@ -1,5 +1,7 @@
 # Ember-cli-vibrant-js-shim
 
+[![Build Status](https://travis-ci.org/chrism/ember-cli-vibrant-js-shim.svg?branch=master)](https://travis-ci.org/chrism/ember-cli-vibrant-js-shim)
+
 Extract prominent colors from an image using [Vibrant.js](http://jariz.github.io/vibrant.js/).
 
 To include in your project install the addon as usual
