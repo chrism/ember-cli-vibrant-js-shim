@@ -24,8 +24,8 @@ export default Ember.Component.extend({
       img.onload = (/* event */) => {
         Ember.run(() => {
           let swatches = new Vibrant(img).swatches();
-          setTimeout(() => { resolve(swatches); }, 1000); // testing async wait works correctly
-          // resolve(swatches);
+          // setTimeout(() => { resolve(swatches); }, 1000); // testing async wait works correctly
+          resolve(swatches);
         });
       };
 

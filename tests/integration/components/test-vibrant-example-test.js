@@ -8,7 +8,7 @@ moduleForComponent('test-vibrant-example', 'Integration | Component | test image
 
 test('it renders', function(assert) {
   assert.expect(5);
-  this.render(hbs`{{test-vibrant-example url="vibrant/examples/1.jpg" ulId="example-1"}}`);
+  this.render(hbs`{{test-vibrant-example url="vibrant/examples/1.jpg"}}`);
 
   return wait().then(() => {
     assert.equal(this.$('ul li').first().text().trim(), "Vibrant #5c76c5 ■");
