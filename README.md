@@ -16,6 +16,8 @@ import Vibrant from 'vibrant';
 
 [Documentation with examples](http://chrismasters.net/ember-cli-vibrant-js-shim/)
 
+# Contributing
+
 ## Installation
 
 * `git clone` this repository
