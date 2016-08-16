@@ -6,26 +6,54 @@ export default Ember.Component.extend({
   tagName: 'img',
   attributeBindings: ['src'],
 
-  imageLoader: Ember.computed(function() { return new Image(); }),
+  init() {
+    this._super(...arguments);
 
-  loadImage() {
-    let img = this.get('imageLoader');
-
-    if (img) {
-      img.onload = () => {
-        Ember.run(() => {
-          var vibrant = new Vibrant(img);
-          var swatches = vibrant.swatches();
-
-          // You can now access the swatches here
-          Ember.Logger.log('swatches', swatches);
-        });
-      };
-      img.src = this.get('src');
+    if (Ember.testing) {
+      this._loading = false;
+      Ember.Test.registerWaiter(() => this._loading === false);
     }
   },
 
-  loadImageOnInsert: Ember.on('didInsertElement', function() {
+  loadImagePromise() {
+    const src = this.get('src');
+
+    let promise = new Ember.RSVP.Promise( (resolve, reject) => {
+      const img = new Image();
+
+      img.onload = (/* event */) => {
+        Ember.run(() => {
+          let swatches = new Vibrant(img).swatches();
+          resolve(swatches);
+        });
+      };
+
+      img.onerror = () => {
+        Ember.run(() => reject());
+      };
+
+      img.src = src;
+    });
+
+    if (Ember.testing) {
+      this._loading = true;
+      return promise.finally(() => this._loading = false);
+    }
+
+    return promise;
+  },
+
+  loadImage() {
+    this.loadImagePromise()
+    .then( swatches => {
+      this.get('onColors')(swatches);
+    })
+    .catch( (/* error */) => {
+      Ember.Logger.log('could not process swatches');
+    });
+  },
+
+  returnSwatchesOnInsert: Ember.on('didInsertElement', function() {
     Ember.run.scheduleOnce('afterRender', this, this.loadImage);
   })
 });
